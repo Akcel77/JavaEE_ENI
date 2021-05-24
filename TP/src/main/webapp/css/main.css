@@ -1,0 +1,13 @@
+main{
+    display: block;
+    margin: 6rem auto;
+    width: 75%;
+
+}
+h1{
+    text-align: center;
+    margin: 6rem auto;
+}
+.row{
+    margin: 3rem auto;
+}
