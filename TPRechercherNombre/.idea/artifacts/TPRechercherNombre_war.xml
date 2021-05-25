@@ -1,0 +1,14 @@
+<component name="ArtifactManager">
+  <artifact type="war" name="TPRechercherNombre:war">
+    <output-path>$PROJECT_DIR$/target</output-path>
+    <properties id="maven-jee-properties">
+      <options>
+        <module>TPRechercherNombre</module>
+        <packaging>war</packaging>
+      </options>
+    </properties>
+    <root id="archive" name="TPRechercherNombre-1.0-SNAPSHOT.war">
+      <element id="artifact" artifact-name="TPRechercherNombre:war exploded" />
+    </root>
+  </artifact>
+</component>
