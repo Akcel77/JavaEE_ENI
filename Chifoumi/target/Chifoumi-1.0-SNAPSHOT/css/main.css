@@ -1,0 +1,9 @@
+.div-box{
+    display: flex;
+    margin: 10rem auto;
+    flex-direction: row;
+    justify-content: space-around;
+}
+a:hover{
+    transform: scale(1.7);
+}
