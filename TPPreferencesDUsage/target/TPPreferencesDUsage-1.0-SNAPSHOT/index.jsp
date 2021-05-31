@@ -4,19 +4,33 @@
 
 <!DOCTYPE html>
 <html>
-<head>
-    <title>Accueil</title>
-    <!-- CSS only -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
-</head>
-<body class="container">
-<% List<String> test = (ArrayList<String>)  application.getAttribute("colors"); %>
-<h1>Accueil</h1>
-<form action="${pageContext.request.contextPath}/book/accueil.jsp" method="post">
+    <head>
+        <%
+            String couleur = "noir";
+            if(session.getAttribute("couleurs") != null){
+                couleur=(String)session.getAttribute("couleurs");
+            }
+        %>
 
-    <input type="submit" value="valider">
-</form>
-<p>Tu as visite le site <%= request.getAttribute("countVisit")%> fois !</p>
-<input type="button" onclick="window.location.href = '${pageContext.request.contextPath}/ServletCouleurUtilisateurPref';" class="btn btn-primary" value="Voir la page">
-</body>
+
+        <title>Preference d'usage</title>
+        <!-- CSS only -->
+        <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/<%=couleur%>.css">
+
+
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
+        <link rel="stylesheet" type="text/css" href="<%=request.getContextPath()%>/css/main.css">
+    </head>
+    <body >
+
+        <div class="box">
+            <h1>Accueil</h1>
+            <input type="button" onclick="window.location.href = '${pageContext.request.contextPath}/ServletCouleurUtilisateurPref';" class="btn btn-primary" value="Choisi ta couleur de preference">
+        </div>
+
+
+
+
+
+    </body>
 </html>

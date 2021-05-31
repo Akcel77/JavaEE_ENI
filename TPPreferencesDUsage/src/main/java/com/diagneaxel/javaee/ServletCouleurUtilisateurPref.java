@@ -10,77 +10,56 @@ import java.util.List;
 @WebServlet(name = "ServletCouleurUtilisateurPref", value = "/ServletCouleurUtilisateurPref")
 public class ServletCouleurUtilisateurPref extends HttpServlet {
 
+    public void init() throws ServletException{
+        List<String> couleurs = new ArrayList<>();
+        couleurs.add("bleu");
+        couleurs.add("rouge");
+        couleurs.add("green");
+        couleurs.add("noir");
+        this.getServletContext().setAttribute("couleurs", couleurs);
+        super.init();
+    }
 
+    public ServletCouleurUtilisateurPref(){
+        super();
+    }
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        int countVisit = getCookies(request, response);
+        Cookie[] cookies = request.getCookies();
+        Cookie cookieNbAcces = null;
 
-        HttpSession httpSession = request.getSession();
-        if(httpSession.getAttribute("colors" )== null){
-            httpSession.setAttribute("colors", "noir");
+        if (cookies != null){
+            for (Cookie c : cookies) {
+                if (c.getName().equals("NbAccess")) {
+                    cookieNbAcces = c;
+                    int value = Integer.parseInt(cookieNbAcces.getValue()) + 1;
+                    cookieNbAcces.setValue(String.valueOf(value));
+                    break;
+                }
+            }
         }
 
-        ServletContext servletContext = this.getServletContext();
-        List<String> colors = new ArrayList<>();
-        colors.add("bleu");
-        colors.add("rouge");
-        colors.add("green");
-        colors.add("noir");
-        servletContext.setAttribute("colors", colors);
+        //Si on a pas de cookies
+        if (cookieNbAcces == null){
+            cookieNbAcces = new Cookie("NbAccess", 1 + "");
+        }
+        cookieNbAcces.setMaxAge(Integer.MAX_VALUE);
+        response.addCookie(cookieNbAcces);
+        request.setAttribute("cookieNbAcces", cookieNbAcces);
 
-        request.setAttribute("countVisit", countVisit + "");
-        System.out.println(countVisit + "doget");
+
         RequestDispatcher rd = null;
-        rd = request.getRequestDispatcher("/book/accueil.jsp");
+        rd = request.getRequestDispatcher("/WEB-INF/accueil.jsp");
         rd.forward(request, response);
 
     }
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        int countVisit = getCookies(request,response);
-        String colors = request.getParameter("colors");
-
-        HttpSession httpSession = request.getSession();
-        httpSession.setAttribute("colors", colors);
-
-        request.setAttribute("countVisit", countVisit + "");
-        System.out.println(countVisit);
-
-        RequestDispatcher rd = null;
-        rd = request.getRequestDispatcher("/book/accueil.jsp");
-        rd.forward(request, response);
+        request.getSession().setAttribute("couleurs", request.getParameter("getColor"));
+        doGet(request, response);
     }
 
-    private int getCookies(HttpServletRequest request, HttpServletResponse response){
-        int value = 1;
-        //Get All cookies et check si le cookies existe
-        Cookie[] cookies = request.getCookies();
-        Cookie cookieNb = null;
-
-
-        for (Cookie cookie : cookies){
-            if(cookie.getName().equals("cookieNb")){
-                value = Integer.parseInt(cookie.getValue())+1;
-                cookie.setValue(String.valueOf(value));
-                cookieNb = cookie;
-                response.addCookie(cookieNb);
-            }
-        }
-
-
-        //Si on a pas de cookies
-        if (cookieNb == null){
-            cookieNb = new Cookie("cookieNb", 1 + "");
-            cookieNb.setMaxAge(Integer.MAX_VALUE);
-            response.addCookie(cookieNb);
-        }
-        //Age du cookies
-
-
-        return value;
-
-    }
 
 }
