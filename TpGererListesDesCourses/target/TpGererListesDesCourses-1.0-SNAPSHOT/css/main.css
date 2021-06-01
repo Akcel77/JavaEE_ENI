@@ -1,0 +1,34 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+body{
+    width: 60%;
+    display: block;
+    margin: 2rem auto!important;
+}
+h1,h2{
+    margin: 2rem auto;
+    text-align: center;
+}
+i{
+    color: black;
+}
+section{
+    display: block;
+    width: 75%;
+    margin: 0 auto;
+}
+ul,li{
+    list-style: none;
+}
+ul{
+    margin: 0 auto;
+}
+.block{
+    margin-bottom: 2rem ;
+}
+footer{
+    text-align: center;
+    margin-top: 3rem;
+}
