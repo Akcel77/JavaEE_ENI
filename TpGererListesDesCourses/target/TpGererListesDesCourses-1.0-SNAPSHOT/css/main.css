@@ -7,8 +7,8 @@ body{
     display: block;
     margin: 2rem auto!important;
 }
-h1,h2{
-    margin: 2rem auto;
+h1,h2,h3{
+    margin: 3rem auto;
     text-align: center;
 }
 i{
@@ -20,15 +20,32 @@ section{
     margin: 0 auto;
 }
 ul,li{
-    list-style: none;
+    list-style: disc;
+
 }
 ul{
-    margin: 0 auto;
+    margin: 3rem auto;
 }
 .block{
     margin-bottom: 2rem ;
+    margin-top: 0.5rem;
 }
 footer{
     text-align: center;
     margin-top: 3rem;
+}
+.right{
+    float : right!important;
+    color : red;
+}
+h3{
+    font-style: italic;
+    text-decoration: underline;
+}
+article{
+    margin: 4rem 0;
+}
+
+text{
+    visibility: hidden ;
 }

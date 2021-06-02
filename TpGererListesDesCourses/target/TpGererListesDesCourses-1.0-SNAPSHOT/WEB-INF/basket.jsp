@@ -21,7 +21,7 @@
 
     <section>
       <core:if test="${!empty liste}">
-        <p>Nom : ${liste.getName()}</p>
+        <h3>Liste : ${liste.getName()}</h3>
         <input type="hidden" value="${liste.getIdentifier()}" name="identifier"/>
         <input type="hidden" value="${liste.getName()}" name="name"/>
       </core:if>
@@ -37,20 +37,23 @@
                       <label class="custom-color custom-checkbox">
                         <input type="hidden" name="identifier" value="${liste.identifier}/">
                         <input type="hidden" name="identifierArticle" value="${article.getIdentifier()}">
-                        <input type="checkbox" class="custom-control-input" name="coche" onclick="document.forms['form${article.identifier}'].submit();" ${article.coche?"checked":""}/>
+
                         <span class="custom-control-indicator"></span>
                         <span class="custom-control-description">${article.name}</span>
                       </label>
 
 
 
+
                     </form>
+
                   </div>
 
                 </li>
               </core:forEach>
+              <button class="btn btn-link" type="submit"><i class="material-icons">check_circle</i> </button>
             </ul>
-            <button type="submit" > <i class="far fa-save"></i></button>
+
 
         </core:when>
 
@@ -60,8 +63,8 @@
       </core:choose>
     </section>
     <p>
-      <a class="btn" href="${pageContext.request.contextPath}/listes"><i class="fas fa-arrow-alt-circle-left"></i></a>
-      <a class="btn" href="${pageContext.request.contextPath}/Basket?identifier=${liste.getIdentifier()}&uncheckAll=${true}"><i class="fas fa-eraser"></i></a>
+      <a class="btn" href="${pageContext.request.contextPath}/listes"><i class="material-icons">arrow_back</i></a>
+      <a class="btn" href="${pageContext.request.contextPath}/Basket?identifier=${liste.getIdentifier()}&uncheckAll=${true}"><i class="material-icons">save</i></a>
     </p>
     <hr/>
     <%@include file="fragments/footer.jsp"%>

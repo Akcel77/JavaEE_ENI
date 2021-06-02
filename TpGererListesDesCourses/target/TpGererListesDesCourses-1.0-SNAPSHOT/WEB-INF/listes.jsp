@@ -24,11 +24,11 @@
             <core:when test="${!empty listes}">
                 <ul>
                     <core:forEach var="liste" items="${listes}">
-                        <li>${liste.name}
+                        <li>Liste : ${liste.name}
                             <div class="block">
-                                <a href="${pageContext.request.contextPath}/display?identifier=${liste.getIdentifier()}" class="badge" title="Editer la liste"><i  class="material-icons">create</i></a>
-                                <a href="${pageContext.request.contextPath}/Basket?identifier=${liste.getIdentifier()}" class="badge" title="Commencer ses courses"><i class="material-icons">shopping_cart</i> </a>
-                                <a href="${pageContext.request.contextPath}/deleteListe?identifier=${liste.getIdentifier()}" class="badge text-danger" title="Supprimer"><i class="material-icons">delete</i></a>
+                                <a href="${pageContext.request.contextPath}/display?identifier=${liste.getIdentifier()}" title="Editer la liste"><i  class="material-icons">create</i></a>
+                                <a href="${pageContext.request.contextPath}/Basket?identifier=${liste.getIdentifier()}"  title="Commencer ses courses"><i class="material-icons">shopping_cart</i> </a>
+                                <a href="${pageContext.request.contextPath}/deleteListe?identifier=${liste.getIdentifier()}" class=" text-danger" title="Supprimer"><i class="material-icons">delete</i></a>
                             </div>
 
                         </li>
@@ -40,7 +40,8 @@
             </core:otherwise>
             </core:choose>
         </section>
-        <p><a href="${pageContext.request.contextPath}/display"><i class="fas fa-plus-square"></i></a></p>
+
+        <p><a href="${pageContext.request.contextPath}/display" title="Creer une nouvelle liste"><i class="material-icons">note_add</i></a></p>
         <hr />
         <%@include file="fragments/footer.jsp"%>
     </body>

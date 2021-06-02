@@ -48,7 +48,7 @@ public class ServletAddListe extends HttpServlet {
                 }
             }
         }
-        request.getRequestDispatcher("/WEB_INF/newList.jsp");
+        request.getRequestDispatcher("/WEB-INF/newList.jsp").forward(request, response);
     }
 
     @Override

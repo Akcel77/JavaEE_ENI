@@ -22,11 +22,11 @@
     <section>
         <form method="post" action="${pageContext.request.contextPath}/addArticle">
             <core:if test="${empty liste}">
-                <label for="name">Nom :</label>
+                <label for="name">Nouvelle Liste :</label>
                 <input class="form-control" type="text" id="name" name="name" value="">
             </core:if>
             <core:if test="${!empty liste}">
-                <p>Nom : ${liste.getName()}</p>
+                <h3>Liste : ${liste.getName()}</h3>
                 <input type="hidden" value="${liste.getIdentifier()}" name="identifier"/>
                 <input type="hidden" value="${liste.getName()}" name="name"/>
             </core:if>
@@ -34,24 +34,24 @@
             <core:when test="${!empty articles}">
                 <core:forEach var="article" items="${articles}">
                     <li>${article.getName()}
-                        <a href="${pageContext.request.contextPath}/deleteArticle?identifier=${liste.getIdentifier()}&identifierArticle=${article.getIdentifier()}"><i class="fas fa-trash-alt"></i></a>
+                        <a href="${pageContext.request.contextPath}/deleteArticle?identifier=${liste.getIdentifier()}&identifierArticle=${article.getIdentifier()}"><i class="material-icons right">delete</i></a>
                     </li>
                 </core:forEach>
             </core:when>
             <core:otherwise>
-            <p>Pas d"article disponible.</p>
+            <p>Pas d'article disponible.</p>
             </core:otherwise>
             </core:choose>
             </ul>
             <article>
-                <h3>Nouvel article</h3>
-                <label for="nameArticle">Nom :</label>
+                <h4>Nouvel article</h4>
+                <label for="nameArticle">Article :</label>
                 <input type="text" id="nameArticle" name="nameArticle">
-                <button type="submit"><i class="far fa-plus-square"></i></button>
+                <button  class="btn btn-link" type="submit"><i class="material-icons">add</i></button>
             </article>
         </form>
     </section>
-    <p><a class="btn" href="${pageContext.request.contextPath}/listes"><i class="fas fa-arrow-alt-circle-left"></i></a></p>
+    <p><a class="btn" href="${pageContext.request.contextPath}/listes"><i class="material-icons">arrow_back</i></a></p>
     <hr />
     <%@include file="fragments/footer.jsp"%>
 </body>
