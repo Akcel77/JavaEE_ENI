@@ -12,6 +12,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
 
+
 @WebServlet("/Basket")
 public class ServletBasket extends HttpServlet {
     protected ListeException errorsCodes = new ListeException();

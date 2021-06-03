@@ -27,9 +27,8 @@ public class FilterCondUtilisation implements Filter {
         }else{
             httpServletRequest.setAttribute("urlTarget", httpServletRequest.getContextPath()+httpServletRequest.getServletPath());
             RequestDispatcher rd = httpServletRequest.getRequestDispatcher("/WEB-INF/condUtilisation.jsp");
-//           TODO
-//            rd.forward(httpServletRequest, httpServletResponse); A FIXER
+            rd.forward(httpServletRequest, httpServletResponse);
         }
-        chain.doFilter(request, response);
+
     }
 }
