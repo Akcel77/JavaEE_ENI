@@ -262,6 +262,7 @@ public class DAOListeJDBC implements DAO<Liste> {
      */
     @Override
     public void uncheckAllContent(int identifier) throws ListeException {
+
         uncheckContentBy(identifier, UNCHECK_ALL_ARTICLES, CodesExceptionDAL.UNCHECK_ARTICLE_ERROR);
     }
 
